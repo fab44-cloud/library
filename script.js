@@ -21,10 +21,16 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, "read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
 
-function displayBookToCard() {
-    document.querySelector("#book-display");
+function displayBooksToCard() {
+    const bookDisplay = document.querySelector(".book-display");
     myLibrary.forEach(book => {
-        console.log(newBook);
+        
+        const bookCard = document.createElement("div");
+        bookCard.classList.add("bookCard");
+
+        bookDisplay.appendChild(bookCard);
     });    
 }
+
+displayBooksToCard();
 
