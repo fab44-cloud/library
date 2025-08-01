@@ -9,6 +9,7 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// Function to add new book to the library array
 function addBookToLibrary(title, author, pages, read) {
   // take params, create a book then store it in the array
   let newBook = new Book(title, author, pages, read)
@@ -16,7 +17,10 @@ function addBookToLibrary(title, author, pages, read) {
   console.log("New book added:", newBook);
 }
 
-addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling",
-    309, true);
+// Manually add books to test the display
+addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, "read");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
 
-console.log("Current library:", myLibrary);
+myLibrary.forEach(function(element, index) {
+    console.log(newBook);
+});
