@@ -3,7 +3,7 @@ const myLibrary = []; // Array to store book objects
 function Book(title, author, pages, read) {
   // the constructor...
   this.id = crypto.randomUUID;
-  this.title = title;
+  this.title = title; // Assigns 'title' property to the new Book object
   this.author = author;
   this.pages = pages;
   this.read = read;
@@ -21,6 +21,10 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, "read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
 
-myLibrary.forEach(function(element, index) {
-    console.log(newBook);
-});
+function displayBookToCard() {
+    document.querySelector("#book-display");
+    myLibrary.forEach(book => {
+        console.log(newBook);
+    });    
+}
+
