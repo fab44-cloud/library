@@ -19,6 +19,12 @@ function addBookToLibrary(title, author, pages, read) {
 
 // Manually add books to test the display
 addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, true);
+addBookToLibrary("Harry Potter and Chamber of Secrets", "J.K. Rowling", 344, false);
+addBookToLibrary("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 437, false);
+addBookToLibrary("Harry Potter and the Goblet of Fire", "J.K. Rowling", 740, false);
+addBookToLibrary("Harry Potter and the Order of the Phoenix", "J.K. Rowling", 877, false);
+addBookToLibrary("Harry Potter and the Half-Blood Prince", "J.K. Rowling", 652, false);
+addBookToLibrary("Harry Potter and the Deathly Hallows", "J.K. Rowling", 766, false);
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
 
 function displayBooksToCard() {
