@@ -26,7 +26,7 @@ function displayBooksToCard() {
     myLibrary.forEach(book => {
         
         const bookCard = document.createElement("div");
-        bookCard.classList.add("bookCard");
+        bookCard.classList.add("book-card");
 
         bookDisplay.appendChild(bookCard);
 
