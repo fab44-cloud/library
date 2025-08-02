@@ -60,3 +60,10 @@ function displayBooksToCard() {
 
 displayBooksToCard();
 
+const dialog = document.querySelector("dialog");
+const newBook = document.querySelector(".new-book");
+
+newBook.addEventListener("click", () => {
+   dialog.showModal();
+});
+
