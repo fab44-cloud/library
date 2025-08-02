@@ -62,8 +62,13 @@ displayBooksToCard();
 
 const dialog = document.querySelector("dialog");
 const newBook = document.querySelector(".new-book");
+const cancelBtn = document.querySelector(".closeBtn");
 
 newBook.addEventListener("click", () => {
    dialog.showModal();
+});
+
+cancelBtn.addEventListener("click", () => {
+    dialog.close();
 });
 
