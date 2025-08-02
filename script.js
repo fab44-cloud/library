@@ -18,8 +18,8 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 // Manually add books to test the display
-addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, "read");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
+addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, "Yes");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "No")
 
 function displayBooksToCard() {
     const bookDisplay = document.querySelector(".book-display");
@@ -29,6 +29,26 @@ function displayBooksToCard() {
         bookCard.classList.add("bookCard");
 
         bookDisplay.appendChild(bookCard);
+
+        const title = document.createElement("h2");
+        title.textContent = book.title;
+        
+        bookCard.appendChild(title);
+
+        const author = document.createElement("p");
+        author.textContent = book.author;
+
+        bookCard.appendChild(author);
+
+        const pages = document.createElement("p");
+        pages.textContent = book.pages;
+
+        bookCard.appendChild(pages);
+
+        const read = document.createElement("p");
+        read.textContent = book.read;
+
+        bookCard.appendChild(read);
     });    
 }
 
