@@ -50,10 +50,19 @@ function displayBooksToCard() {
         const readStatus = document.createElement("p");
         readStatus.textContent = `Read: ${book.read ? "Yes" : "No"}`;
 
+        // Add remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add('remove-book-btn');
+        removeBtn.textContent = "Remove Book";
+        // Store the book's unique ID as a data-attribute on the card
+        removeBtn.dataset.bookId = book.id;
+        console.log(removeBtn.dataset.bookId);
+        
         bookCard.appendChild(title);
         bookCard.appendChild(author);
         bookCard.appendChild(pages);
-        bookCard.appendChild(readStatus); 
+        bookCard.appendChild(readStatus);
+        bookCard.appendChild(removeBtn); 
         
         bookDisplay.appendChild(bookCard);
     });    
@@ -100,5 +109,10 @@ bookForm.addEventListener("submit", (event) => {
     dialog.close();
     
 });
+
+// Handle remove button
+// removeBtn.addEventListener(() => {
+
+// });
 
 displayBooksToCard();
