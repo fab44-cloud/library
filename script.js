@@ -30,6 +30,9 @@ addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
 
 function displayBooksToCard() {
     const bookDisplay = document.querySelector(".book-display");
+    // Clear previous display to avoid duplication
+    bookDisplay.innerHTML = "";
+
     myLibrary.forEach(book => {
         
         const bookCard = document.createElement("div");
@@ -64,21 +67,23 @@ function displayBooksToCard() {
 const dialog = document.querySelector("dialog");
 const newBookBtn = document.querySelector(".new-book");
 const cancelBtn = document.querySelector(".closeBtn");
-const confirmBtn = document.querySelector(".confirmBtn");
-const formContainer = document.querySelector(".form-container");
+// const confirmBtn = document.querySelector(".confirmBtn");
+const bookForm = document.querySelector(".bookForm");
 
 // Show the dialog when the "New book" button is clicked
 newBookBtn.addEventListener("click", () => {
-   dialog.showModal();
+    bookForm.reset(); // Clear form fields when opening dialog
+    dialog.showModal();
 });
 
 // Close the dialog when the "Cancel" button is clicked
 cancelBtn.addEventListener("click", () => {
+    bookForm.reset(); // Clear form fields when closing dialog
     dialog.close();
 });
 
 // Handle form submission
-formContainer.addEventListener("submit", (event) => {
+bookForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     // Get values from the form inputs
@@ -91,8 +96,12 @@ formContainer.addEventListener("submit", (event) => {
     // Add the new book to the library array
     addBookToLibrary(title, author, pages, read);
 
+    // Update the display
+    displayBooksToCard();
+
+    // Close form after updating the display
     dialog.close();
-    formContainer.reset();
+    
 });
 
 displayBooksToCard();
