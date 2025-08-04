@@ -38,27 +38,24 @@ function displayBooksToCard() {
         const bookCard = document.createElement("div");
         bookCard.classList.add("book-card");
 
-        bookDisplay.appendChild(bookCard);
-
         const title = document.createElement("h2");
         title.textContent = book.title;
         
-        bookCard.appendChild(title);
-
         const author = document.createElement("p");
         author.textContent = `Author: ${book.author}`;
-
-        bookCard.appendChild(author);
 
         const pages = document.createElement("p");
         pages.textContent = `Pages: ${book.pages}`;
 
-        bookCard.appendChild(pages);
-
         const readStatus = document.createElement("p");
         readStatus.textContent = `Read: ${book.read ? "Yes" : "No"}`;
 
-        bookCard.appendChild(readStatus);
+        bookCard.appendChild(title);
+        bookCard.appendChild(author);
+        bookCard.appendChild(pages);
+        bookCard.appendChild(readStatus); 
+        
+        bookDisplay.appendChild(bookCard);
     });    
 }
 
