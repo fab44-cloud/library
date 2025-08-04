@@ -2,7 +2,7 @@ const myLibrary = []; // Array to store book objects
 
 function Book(title, author, pages, read) {
   // the constructor...
-  this.id = crypto.randomUUID;
+  this.id = crypto.randomUUID();
   this.title = title; // Assigns 'title' property to the new Book object
   this.author = author;
   this.pages = pages;
@@ -12,8 +12,9 @@ function Book(title, author, pages, read) {
 // Function to add new book to the library array
 function addBookToLibrary(title, author, pages, read) {
   // take params, create a book then store it in the array
-  let newBook = new Book(title, author, pages, read)
+  let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook)
+  console.log(myLibrary);
   console.log("New book added:", newBook);
 }
 
@@ -58,17 +59,40 @@ function displayBooksToCard() {
     });    
 }
 
-displayBooksToCard();
 
+// --- Form and Button Logic ---
 const dialog = document.querySelector("dialog");
-const newBook = document.querySelector(".new-book");
+const newBookBtn = document.querySelector(".new-book");
 const cancelBtn = document.querySelector(".closeBtn");
+const confirmBtn = document.querySelector(".confirmBtn");
+const formContainer = document.querySelector(".form-container");
 
-newBook.addEventListener("click", () => {
+// Show the dialog when the "New book" button is clicked
+newBookBtn.addEventListener("click", () => {
    dialog.showModal();
 });
 
+// Close the dialog when the "Cancel" button is clicked
 cancelBtn.addEventListener("click", () => {
     dialog.close();
 });
 
+// Handle form submission
+formContainer.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // Get values from the form inputs
+    const title = document.querySelector(".title").value;
+    console.log(title);
+    const author = document.querySelector(".author").value;
+    const pages = document.querySelector(".pages").value;
+    const read = document.querySelector(".read").checked;
+
+    // Add the new book to the library array
+    addBookToLibrary(title, author, pages, read);
+
+    dialog.close();
+    formContainer.reset();
+});
+
+displayBooksToCard();
