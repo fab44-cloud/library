@@ -111,8 +111,11 @@ bookForm.addEventListener("submit", (event) => {
 });
 
 // Handle remove button
-// removeBtn.addEventListener(() => {
-
-// });
+// const removeBtn = document.querySelector(".remove-book-btn");
+// console.log(bookForm);
+bookForm.addEventListener("click", () => {
+    const bookIdToRemove = removeBtn.dataset.bookId;
+    console.log(bookIdToRemove);
+});
 
 displayBooksToCard();
