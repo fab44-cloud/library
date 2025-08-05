@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: skyblue;
+    background-color: dodgerblue;
 }
 
 .book-display {
@@ -25,9 +25,20 @@ body {
 }
 
 .book-card h2 {
-    color: bisque;
+    color: sandybrown;
 }
 
 .book-card p {
-    color: blanchedalmond;
+    color: seashell;
+}
+
+::backdrop {
+    background-image: linear-gradient(
+        45deg,
+        magenta,
+        rebeccapurple,
+        dodgerblue,
+        green
+    );
+    opacity: 0.75;
 }
