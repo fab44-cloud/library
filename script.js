@@ -1,4 +1,4 @@
-const myLibrary = []; // Array to store book objects
+let myLibrary = []; // Array to store book objects
 
 function Book(title, author, pages, read) {
   // the constructor...
@@ -18,6 +18,12 @@ function addBookToLibrary(title, author, pages, read) {
   console.log("New book added:", newBook);
 }
 
+function removeBook(bookIdToRemove) {
+    // Filter the array to create a new array without the book to remove
+    myLibrary = myLibrary.filter(book => book.id !== bookIdToRemove);
+    displayBooks();
+}
+
 // Manually add books to test the display
 addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, true);
 addBookToLibrary("Harry Potter and Chamber of Secrets", "J.K. Rowling", 344, false);
@@ -28,7 +34,7 @@ addBookToLibrary("Harry Potter and the Half-Blood Prince", "J.K. Rowling", 652, 
 addBookToLibrary("Harry Potter and the Deathly Hallows", "J.K. Rowling", 766, false);
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
 
-function displayBooksToCard() {
+function displayBooks() {
     const bookDisplay = document.querySelector(".book-display");
     // Clear previous display to avoid duplication
     bookDisplay.innerHTML = "";
@@ -57,6 +63,11 @@ function displayBooksToCard() {
         // Store the book's unique ID as a data-attribute on the card
         removeBtn.dataset.bookId = book.id;
         console.log(removeBtn.dataset.bookId);
+
+        // removeBtn.addEventListener("click", (event) => {
+        //     const bookIdToRemove = event.target.dataset.bookId;
+        //     removeBook(bookIdToRemove);
+        // });
         
         bookCard.appendChild(title);
         bookCard.appendChild(author);
@@ -93,17 +104,17 @@ bookForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     // Get values from the form inputs
-    const title = document.querySelector(".title").value;
+    const title = document.querySelector("#title").value;
     console.log(title);
-    const author = document.querySelector(".author").value;
-    const pages = document.querySelector(".pages").value;
-    const read = document.querySelector(".read").checked;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const read = document.querySelector("#read").checked;
 
     // Add the new book to the library array
     addBookToLibrary(title, author, pages, read);
 
     // Update the display
-    displayBooksToCard();
+    displayBooks();
 
     // Close form after updating the display
     dialog.close();
@@ -111,11 +122,15 @@ bookForm.addEventListener("submit", (event) => {
 });
 
 // Handle remove button
-// const removeBtn = document.querySelector(".remove-book-btn");
-// console.log(bookForm);
-bookForm.addEventListener("click", () => {
-    const bookIdToRemove = removeBtn.dataset.bookId;
-    console.log(bookIdToRemove);
+const bookDisplay = document.querySelector(".book-display");
+console.log(bookDisplay);
+
+bookDisplay.addEventListener("click", (event) => {
+    if (event.target.classList.contains("remove-book-btn")) {
+        const bookIdToRemove = event.target.dataset.bookId;
+        console.log(bookIdToRemove);
+        removeBook(bookIdToRemove);
+    }
 });
 
-displayBooksToCard();
+displayBooks();
