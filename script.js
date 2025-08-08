@@ -24,6 +24,12 @@ function removeBook(bookIdToRemove) {
     displayBooks();
 }
 
+// Add a method to the Book prototype to toggle the read status
+Book.prototype.toggleReadStatus = function() {
+    this.read = !this.read;
+    displayBooks();
+}
+
 // Manually add books to test the display
 addBookToLibrary("Harry Potter and the Sorcerers Stone", "J.K. Rowling", 309, true);
 addBookToLibrary("Harry Potter and Chamber of Secrets", "J.K. Rowling", 344, false);
@@ -39,7 +45,7 @@ function displayBooks() {
     // Clear previous display to avoid duplication
     bookDisplay.innerHTML = "";
 
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         
         const bookCard = document.createElement("div");
         bookCard.classList.add("book-card");
@@ -62,18 +68,32 @@ function displayBooks() {
         removeBtn.textContent = "Remove Book";
         // Store the book's unique ID as a data-attribute on the card
         removeBtn.dataset.bookId = book.id;
-        console.log(removeBtn.dataset.bookId);
+        // console.log(removeBtn.dataset.bookId);
 
         // removeBtn.addEventListener("click", (event) => {
         //     const bookIdToRemove = event.target.dataset.bookId;
         //     removeBook(bookIdToRemove);
+        // });
+
+        // Add read status button
+        const readStatusBtn = document.createElement("button");
+        readStatusBtn.classList.add('read-status-btn');
+        readStatusBtn.textContent = book.read ? "Mark as unread" : "Mark as read";
+        readStatusBtn.dataset.bookIndex = index;
+        // console.log(index);
+
+        // readStatusBtn.addEventListener("click", () => {
+        //     book.toggleReadStatus(); // Direclty call the prototype method on the "book" object
+
+        //     readStatusBtn.textContent = book.read ? "Mark as unread" : "Mark as read";
         // });
         
         bookCard.appendChild(title);
         bookCard.appendChild(author);
         bookCard.appendChild(pages);
         bookCard.appendChild(readStatus);
-        bookCard.appendChild(removeBtn); 
+        bookCard.appendChild(removeBtn);
+        bookCard.appendChild(readStatusBtn);
         
         bookDisplay.appendChild(bookCard);
     });    
@@ -123,7 +143,7 @@ bookForm.addEventListener("submit", (event) => {
 
 // Handle remove button
 const bookDisplay = document.querySelector(".book-display");
-console.log(bookDisplay);
+// console.log(bookDisplay);
 
 bookDisplay.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove-book-btn")) {
@@ -131,6 +151,18 @@ bookDisplay.addEventListener("click", (event) => {
         console.log(bookIdToRemove);
         removeBook(bookIdToRemove);
     }
+
+    // Handle read status button
+    else if (event.target.classList.contains("read-status-btn")) {
+        const bookIndex = event.target.dataset.bookIndex;
+        const book = myLibrary[bookIndex];
+        book.toggleReadStatus();
+        displayBooks();
+    }
+        
 });
+
+
+
 
 displayBooks();
