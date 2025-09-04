@@ -1,6 +1,6 @@
 :root {
   --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --bg-color: dodgeblue;
+  --bg-color: dodgerblue;
   --text-color: seashell;
   --card-bg-color: coral;
   --border-color: coral;
@@ -52,4 +52,8 @@ body {
         green
     );
     opacity: 0.75;
+}
+
+button:hover, button:focus {
+    opacity: 0.8;
 }
