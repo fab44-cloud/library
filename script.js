@@ -1,13 +1,17 @@
-let myLibrary = []; // Array to store book objects
-
-function Book(title, author, pages, read) {
-  // the constructor...
-  this.id = crypto.randomUUID();
-  this.title = title; // Assigns 'title' property to the new Book object
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+    constructor(title, author, pages, read) {
+        this.id = crypto.randomUUID();
+        this.title = title; // Assigns 'title' property to the new Book object
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    toggleReadStatus() {
+        this.read = !this.read;
+    }
 }
+
+let myLibrary = []; // Array to store book objects
 
 // Function to add new book to the library array
 function addBookToLibrary(title, author, pages, read) {
@@ -21,12 +25,6 @@ function addBookToLibrary(title, author, pages, read) {
 function removeBook(bookIdToRemove) {
     // Filter the array to create a new array without the book to remove
     myLibrary = myLibrary.filter(book => book.id !== bookIdToRemove);
-    displayBooks();
-}
-
-// Add a method to the Book prototype to toggle the read status
-Book.prototype.toggleReadStatus = function() {
-    this.read = !this.read;
     displayBooks();
 }
 
@@ -161,8 +159,5 @@ bookDisplay.addEventListener("click", (event) => {
     }
         
 });
-
-
-
 
 displayBooks();
