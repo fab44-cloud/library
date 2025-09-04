@@ -1,5 +1,9 @@
 :root {
   --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --bg-color: dodgeblue;
+  --text-color: seashell;
+  --card-bg-color: coral;
+  --border-color: coral;
 }
 
 *, *::before, *::after {
@@ -11,9 +15,9 @@
 }
 
 body {
-    background-color: dodgerblue;
+    background-color: var(--bg-color);
     font-family: var(--system-ui);
-    color: seashell;
+    color: var(--text-color);
 }
 
 .book-display {
@@ -24,22 +28,19 @@ body {
 }
 
 .book-card {
-    border: 1px solid coral;
+    border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 1rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    /* display: flex;
-    flex-direction: column;
-    gap: 0.5rem; */
-    background-color: coral;
+    background-color: var(--card-bg-color);
 }
 
 .book-card h2 {
-    color: seashell;
+    color: var(--text-color);
 }
 
 .book-card p {
-    color: seashell;
+    color: var(--text-color);
 }
 
 ::backdrop {
