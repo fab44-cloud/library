@@ -1,7 +1,7 @@
 class Book {
     constructor(title, author, pages, read) {
         this.id = crypto.randomUUID();
-        this.title = title; // Assigns 'title' property to the new Book object
+        this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
@@ -13,7 +13,6 @@ class Book {
 
 let myLibrary = []; // Array to store book objects
 
-// Function to add new book to the library array
 function addBookToLibrary(title, author, pages, read) {
   // take params, create a book then store it in the array
   let newBook = new Book(title, author, pages, read);
@@ -60,31 +59,16 @@ function displayBooks() {
         const readStatus = document.createElement("p");
         readStatus.textContent = `Read: ${book.read ? "Yes" : "No"}`;
 
-        // Add remove button
         const removeBtn = document.createElement("button");
         removeBtn.classList.add('remove-book-btn');
         removeBtn.textContent = "Remove Book";
         // Store the book's unique ID as a data-attribute on the card
         removeBtn.dataset.bookId = book.id;
-        // console.log(removeBtn.dataset.bookId);
 
-        // removeBtn.addEventListener("click", (event) => {
-        //     const bookIdToRemove = event.target.dataset.bookId;
-        //     removeBook(bookIdToRemove);
-        // });
-
-        // Add read status button
         const readStatusBtn = document.createElement("button");
         readStatusBtn.classList.add('read-status-btn');
         readStatusBtn.textContent = book.read ? "Mark as unread" : "Mark as read";
         readStatusBtn.dataset.bookIndex = index;
-        // console.log(index);
-
-        // readStatusBtn.addEventListener("click", () => {
-        //     book.toggleReadStatus(); // Direclty call the prototype method on the "book" object
-
-        //     readStatusBtn.textContent = book.read ? "Mark as unread" : "Mark as read";
-        // });
         
         bookCard.appendChild(title);
         bookCard.appendChild(author);
@@ -97,12 +81,10 @@ function displayBooks() {
     });    
 }
 
-
 // --- Form and Button Logic ---
 const dialog = document.querySelector("dialog");
 const newBookBtn = document.querySelector(".new-book");
 const cancelBtn = document.querySelector(".closeBtn");
-// const confirmBtn = document.querySelector(".confirmBtn");
 const bookForm = document.querySelector(".bookForm");
 
 // Show the dialog when the "New book" button is clicked
@@ -123,25 +105,20 @@ bookForm.addEventListener("submit", (event) => {
 
     // Get values from the form inputs
     const title = document.querySelector("#title").value;
-    console.log(title);
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
     const read = document.querySelector("#read").checked;
 
-    // Add the new book to the library array
     addBookToLibrary(title, author, pages, read);
 
-    // Update the display
     displayBooks();
 
-    // Close form after updating the display
     dialog.close();
     
 });
 
 // Handle remove button
 const bookDisplay = document.querySelector(".book-display");
-// console.log(bookDisplay);
 
 bookDisplay.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove-book-btn")) {
@@ -156,8 +133,7 @@ bookDisplay.addEventListener("click", (event) => {
         const book = myLibrary[bookIndex];
         book.toggleReadStatus();
         displayBooks();
-    }
-        
+    }        
 });
 
 displayBooks();
