@@ -120,20 +120,18 @@ bookForm.addEventListener("submit", (event) => {
 // Handle remove button
 const bookDisplay = document.querySelector(".book-display");
 
-bookDisplay.addEventListener("click", (event) => {
+bookDisplay.addEventListener("click", handleBookCardClick);
+
+function handleBookCardClick(event) {
     if (event.target.classList.contains("remove-book-btn")) {
         const bookIdToRemove = event.target.dataset.bookId;
-        console.log(bookIdToRemove);
         removeBook(bookIdToRemove);
-    }
-
-    // Handle read status button
-    else if (event.target.classList.contains("read-status-btn")) {
+    } else if (event.target.classList.contains("read-status-btn")) {
         const bookIndex = event.target.dataset.bookIndex;
         const book = myLibrary[bookIndex];
         book.toggleReadStatus();
         displayBooks();
     }        
-});
+}
 
 displayBooks();
